@@ -1,0 +1,30 @@
+#include<iostream>
+#include<string>
+#include<algorithm>
+
+using namespace std;
+
+int main(){
+    string S;   getline(cin,S);
+    
+    transform(S.begin(), S.end(),S.begin(), ::tolower);
+    
+    sort(S.begin(),S.end());
+    auto Q = unique(S.begin(),S.end());
+    
+    string P = "abcdefghijklmnopqrstuvwxyz";
+    int count{0},k{0};
+    for(int i=0;i<Q.length();i++)
+    {
+        if(Q.at(i)==P.at(k))
+        {
+            count++;
+            k++;
+        }
+    }
+    if(count==26)
+        cout << "pangram"<<endl;
+    else
+        cout << "not pangram"<<endl;
+    
+}
